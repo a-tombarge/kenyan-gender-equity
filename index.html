@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Kenyan Primary School Enrollment</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <link href='https://api.mapbox.com/mapbox-assembly/v0.20.0/assembly.min.css' rel='stylesheet'>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Muli:600" rel="stylesheet"> 
+  <link href='css/styles.css' rel='stylesheet' />
+</head>
+
+<body>
+  <div class='flex-parent viewport-full relative scroll-hidden'>
+    <div class='flex-child w-full w300-ml absolute static-ml left bottom'>
+      <div class='flex-parent flex-parent--column viewport-third h-full-ml hmax-full bg-white py18 px12'>
+        <div class='flex-child flex-child--grow px12 py12 scroll-auto'>
+          <h2 class='txt-h2 mb6'>Gender Equity in Kenyan Primary Schools</h2>
+          &nbsp
+          <p>This map takes a look at the success Kenya has had in enrolling equal numbers of boys and girls in grades 1-8 by county.</p>
+          &nbsp
+          <p>Mouse over the circles and an enrollment number for boy and girls is given along with a comparative graph for all grades.</p>
+          &nbsp
+          <p>The data was last updated on January 20, 2017.</p>
+          <!-- <h2 class='txt-xl mt18 mb12'>subheading</h2>
+          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed posuere consectetur est
+            at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum
+            nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus
+            et magnis dis parturient montes, nascetur ridiculus mus.</p> -->
+        </div>
+        <footer class='px12 py12 bg-gray-faint border border--gray-light round txt-s'>
+          <ul>
+            <li>Explore the raw
+              <a target="_blank" class='link' href='https://icta-kenyaopendata.opendata.arcgis.com/datasets/national-boys-and-girls-enrollments-per-class-for-primary-school-education'>data</a>
+            </li>
+            <li>Map authored by
+              <a target="_blank" class='link' href='http://a-tombarge.github.io'>Alisande Tombarge</a>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+    <div class='flex-child flex-child--grow viewport-twothirds viewport-full-ml relative'>
+
+      <div id="map" class='viewport-twothirds viewport-full-ml'></div>
+      
+      <!-- box for the grade number -->
+      <div id='gradeBox' class='px6 bg-white border border--gray-light round absolute'>
+        <h3 class="txt-bold mb12">Grade: <span>1</span></h3>
+      </div> 
+    </div>
+  </div>
+
+  <!-- ui slider -->
+  <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
+    <input type='range' min="1", max="8", value="1", step="1"/>
+  </div>
+  
+
+
+  <!-- legend -->
+  <div id='legend' class='bg-white border border--gray-light round px12 py12 relative'>
+    <div id='show_legend'>
+      <h3 class='mb12 w180 align-center'>Maximum &amp; Median Enrollment Numbers </h3>
+      <div class='legend-circles relative w180'>
+        <div class="legend-large border border--gray-light absolute"></div>
+        <div class="legend-small border border--gray-light absolute"></div>
+        <div class="legend-large-label txt-m absolute"></div>
+        <div class="legend-small-label txt-m absolute"></div>
+      </div>
+    </div>
+    <!-- button for legend -->
+    <button id='legend_btn' class='btn--white stroke stroke--gray-light round'>L</button>
+  
+  
+  </div>
+
+  
+
+  <!-- ui info panel -->
+  <div id='info' class='py6 px12 bg-white border border--gray-light round absolute w240'>
+    <p>County:
+      <span></span>
+    </p>
+    <p class='girls'>Girls
+      <span></span>:
+      <span class='txt-l txt-bold'></span>
+    </p>
+    <p class='boys'>Boys
+      <span></span>:
+      <span class='txt-l txt-bold'></span>
+    </p>
+
+    <!-- Formatting elements for sparkline chart -->
+    <hr class='txt-hr'>
+    <p class='my6'>Trend: Grades 1 &ndash; 8</p>
+    <p class='mb6'><span class='girlspark'></span></p>
+    <p><span class='boyspark'></span></p>
+    
+  </div>
+
+  <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.20.0/assembly.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+  <script src='js/app.js'></script>
+
+</body>
+
+</html>
